@@ -3,28 +3,31 @@
 int main()
 {
 	int i;
+	int elem;
 
-	msbits_init();
 	tale_draft_init();
 	tale_draft_read_tales();
+	tale_index_init();
+	tale_init();
 	weight_init();
-	index_init();
+	msbits_init();
 
 	while(!msbits_if_filled_all(msbits)){
 		elem=weight_most_heavy_element(weight);
-		msbits_fill_element(elem);
-		msbits_auto_fill_by_subtract_all(msbits);
-		do{
-			for(i=0; i<ntales; i++){
-				if(index_if_adoptable(index[i], msbits)){
-					index_print_element(i);
-					weight_subtract_by_index(index[i]);
-					index_adopt_element(i);
-					tale_destroy_element(i);
-					i=-1;
-				}
+		printf("Bruteforce element:%d\n", elem);
+		msbits_fill_element(elem, &msbits);
+		msbits_subtractive_fill_all(&msbits);
+		for(i=0; i<ntales; i++){
+			if(tale_index_if_adoptable_to_msbits(msbits, tale_index[i])){
+				tale_index_print(tale_index[i]);
+				msbits_adopt_tale_index(tale_index[i]);
+				weight_subtract_by_tale_index(tale_index[i], weight);
+				i=-1;
 			}
-		}while(msbits_auto_fill_by_subtract_all(msbits));
+			if(msbits_subtractive_fill_all(&msbits)){
+				i=-1;
+			}
+		}
 	}
 
 	return 0;

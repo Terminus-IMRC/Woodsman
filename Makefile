@@ -1,5 +1,5 @@
 PROG=NurseryTale
-SRCS=main.c
+SRCS=main.c will_and_die.c
 SRCS_XDEP=main.c
 OBJS=$(SRCS:%.c=%.c.o)
 OBJS_XDEP=$(SRCS_XDEP:%.c=%.c.o)

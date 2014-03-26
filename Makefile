@@ -1,10 +1,7 @@
-PROG=NurseryTale
-SRCS=main.c will_and_die.c
-SRCS_XDEP=main.c
+PROG=Woodsman
+SRCS=main.c will_and_die.c tale.c tale_index.c tale_draft.c msbits.c weight.c bits_utils.c
 OBJS=$(SRCS:%.c=%.c.o)
-OBJS_XDEP=$(SRCS_XDEP:%.c=%.c.o)
 ALLDEP=$(MAKEFILE_LIST)
-TOCLEAN=index.db
 
 all: $(PROG)
 
@@ -17,15 +14,6 @@ WC:=wc -c -l
 
 COMPILE.c=$(CC) $(HEADERFLAGS) $(OPTFLAGS) $(WARNFLAGS) $(DEPFLAGS) $(ADDCFLAGS) $(CFLAGS) -c
 LINK.o=$(CC) $(OPTFLAGS) $(WARNFLAGS) $(LINKFLAGS) $(LDFLAGS)
-
-X?=3
-X_VALFLAGS=-DX=$(X)
-XNUM=.x
-$(shell ([ -f $(XNUM) ] && [ `cat $(XNUM)` -eq $(X) ]) || echo $(X) >$(XNUM))
-
-$(OBJS_XDEP): $(XNUM)
-$(OBJS_XDEP): DEPFLAGS+=$(X_VALFLAGS)
-
 
 $(PROG): $(OBJS) $(ALLDEP)
 	$(LINK.o) $(OUTPUT_OPTION) $(OBJS)
@@ -43,5 +31,4 @@ line:
 .PHONY: clean
 clean:
 	$(RM) $(PROG) $(OBJS)
-	$(RM) $(XNUM)
 	$(RM) $(TOCLEAN)

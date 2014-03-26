@@ -1,4 +1,11 @@
 #include "common.h"
+#include "tale.h"
+#include "tale_draft.h"
+#include "tale_index.h"
+#include "msbits.h"
+#include "weight.h"
+#include "bits_utils.h"
+#include <stdio.h>
 
 int main()
 {
@@ -8,7 +15,6 @@ int main()
 	tale_draft_init();
 	tale_draft_read_tales();
 	tale_index_init();
-	tale_init();
 	weight_init();
 	msbits_init();
 

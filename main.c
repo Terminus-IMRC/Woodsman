@@ -22,6 +22,8 @@ int main()
 
 	printf("main: initialization finished\n");
 
+	weight_print(weight);
+
 	while(!msbits_if_filled_all(msbits)){
 		elem=weight_most_heavy_element(weight);
 		printf("main: bruteforce element: %d\n", elem);

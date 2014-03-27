@@ -17,5 +17,6 @@
 	void weight_make();
 	long int weight_most_heavy_element(weight_t weight);
 	void weight_subtract_by_tale_index(uint64_t ti, weight_t weight);
+	void weight_print(weight_t weight);
 
 #endif /* __WEIGHT_H_INSIDE__ */

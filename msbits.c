@@ -97,6 +97,7 @@ _Bool msbits_subtractive_fill_all(msbits_t *m)
 				goto contloop;
 			}
 		}
+		break;
 contloop:	continue;
 	}
 

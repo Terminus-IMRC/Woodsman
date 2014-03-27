@@ -92,3 +92,13 @@ void weight_subtract_by_tale_index(uint64_t ti, weight_t weight)
 	
 	return;
 }
+
+void weight_print(weight_t weight)
+{
+	int i;
+
+	for(i=0; i<X*X; i++)
+		printf("%ld%c", weight[i], i!=X*X-1?' ':'\n');
+
+	return;
+}

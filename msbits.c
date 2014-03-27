@@ -36,19 +36,33 @@ void msbits_subtractive_fill_init()
 		tmp_hriz<<=1;
 		tmp_hriz|=(uint64_t)1;
 	}
+	tmp_hriz<<=X*X-X;
 
 	for(i=0; i<X; i++){
 		subtraction_base_vert[i]=tmp_vert<<(X-i-1);
-		subtraction_base_hriz[i]=tmp_hriz<<(i*X);
+		subtraction_base_hriz[i]=tmp_hriz>>(i*X);
 	}
 
 	for(i=0; i<X; i++){
-		subtraction_base_diag[0]<<=(X+1);
+		subtraction_base_diag[0]<<=(X+1+1);
 		subtraction_base_diag[0]|=(uint64_t)1;
-		subtraction_base_diag[1]<<=(X-1);
+		subtraction_base_diag[1]<<=(X-1+1);
 		subtraction_base_diag[1]|=(uint64_t)1;
 	}
 	subtraction_base_diag[1]<<=(X-1);
+
+	for(i=0; i<X; i++){
+		printf("msbits_subtractive_fill_init: vert[%d]: ", i);
+		print_bits_64(subtraction_base_vert[i]);
+	}
+	for(i=0; i<X; i++){
+		printf("msbits_subtractive_fill_init: hriz[%d]: ", i);
+		print_bits_64(subtraction_base_hriz[i]);
+	}
+	for(i=0; i<2; i++){
+		printf("msbits_subtractive_fill_init: diag[%d]: ", i);
+		print_bits_64(subtraction_base_diag[i]);
+	}
 
 	return;
 }

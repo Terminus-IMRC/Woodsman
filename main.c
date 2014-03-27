@@ -22,6 +22,7 @@ int main()
 
 	printf("main: initialization finished\n");
 
+	printf("weight: ");
 	weight_print(weight);
 
 	while(!msbits_if_filled_all(msbits)){

@@ -74,7 +74,7 @@ void msbits_finalize()
 
 void msbits_fill_element(int elem, msbits_t *m)
 {
-	(*m)|=(msbits_t)1<<(elem);
+	(*m)|=(msbits_t)1<<(X*X-elem-1);
 
 	return;
 }

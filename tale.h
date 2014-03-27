@@ -13,5 +13,6 @@
 	void tale_destroy(tale_t t);
 	void tale_read();
 	void tale_alloc();
+	void tale_print(tale_element_t t);
 
 #endif /* __TALE_H_INSIDE__ */

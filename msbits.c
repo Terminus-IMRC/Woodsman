@@ -80,16 +80,19 @@ _Bool msbits_subtractive_fill_all(msbits_t *m)
 	for(;; if_filled=1){
 		for(i=0; i<X; i++){
 			if(tale_index_if_adoptable_to_msbits(subtraction_base_vert[i], (*m))){
+				printf("msbits_subtractive: applying vert[%d]\n", i);
 				(*m)|=subtraction_base_vert[i];
 				goto contloop;
 			}
 			if(tale_index_if_adoptable_to_msbits(subtraction_base_hriz[i], (*m))){
+				printf("msbits_subtractive: applying hriz[%d]\n", i);
 				(*m)|=subtraction_base_hriz[i];
 				goto contloop;
 			}
 		}
 		for(i=0; i<2; i++){
 			if(tale_index_if_adoptable_to_msbits(subtraction_base_diag[i], (*m))){
+				printf("msbits_subtractive: applying diag[%d]\n", i);
 				(*m)|=subtraction_base_diag[i];
 				goto contloop;
 			}

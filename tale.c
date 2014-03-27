@@ -70,3 +70,13 @@ void tale_alloc()
 
 	return;
 }
+
+void tale_print(tale_element_t t)
+{
+	int i;
+
+	for(i=0; i<X*X; i++)
+		printf("%d%c", t[i], i!=X*X-1?' ':'\n');
+
+	return;
+}

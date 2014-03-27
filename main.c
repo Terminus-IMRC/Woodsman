@@ -26,9 +26,13 @@ int main()
 	weight_print(weight);
 
 	while(!msbits_if_filled_all(msbits)){
+		printf("main: msbits: ");
+		print_bits_64(msbits);
 		elem=weight_most_heavy_element(weight);
 		printf("main: bruteforce element: %d\n", elem);
 		msbits_fill_element(elem, &msbits);
+		printf("main: msbits: ");
+		print_bits_64(msbits);
 		msbits_subtractive_fill_all(&msbits);
 		for(i=0; i<(long int)ntales; i++){
 			if(tale_index_if_adoptable_to_msbits(msbits, tale_index[i])){

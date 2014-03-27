@@ -2,6 +2,7 @@
 #define __WEIGHT_H_INSIDE__
 
 #include "tale_index.h"
+#include "msbits.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -15,7 +16,7 @@
 	void weight_alloc();
 	void weight_destroy();
 	void weight_make();
-	long int weight_most_heavy_element(weight_t weight);
+	long int weight_most_heavy_element(weight_t weight, msbits_t m);
 	void weight_subtract_by_tale_index(uint64_t ti, weight_t weight);
 	void weight_print(weight_t weight);
 

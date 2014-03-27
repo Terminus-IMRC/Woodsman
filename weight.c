@@ -10,7 +10,7 @@ void weight_finalize();
 void weight_alloc();
 void weight_destroy();
 void weight_make();
-long int weight_most_heavy_element(weight_t weight);
+long int weight_most_heavy_element(weight_t weight, msbits_t m);
 void weight_subtract_by_tale_index(uint64_t ti, weight_t weight);
 
 void weight_init()
@@ -66,18 +66,20 @@ void weight_make()
 	return;
 }
 
-long int weight_most_heavy_element(weight_t weight)
+long int weight_most_heavy_element(weight_t weight, msbits_t m)
 {
 	int i;
-	long int most_heavy_element;
+	long int most_heavy_element=-1;
 	weight_element_t most_heavy_value=0;
 
 	for(i=0; i<X*X; i++){
-		if(weight[i]>most_heavy_value){
+		if((!(m&((uint64_t)1<<(X*X-i-1)))) && weight[i]>most_heavy_value){
 			most_heavy_element=i;
 			most_heavy_value=weight[i];
 		}
 	}
+
+	assert(most_heavy_element!=-1);
 
 	return most_heavy_element;
 }

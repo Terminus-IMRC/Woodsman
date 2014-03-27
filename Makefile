@@ -2,6 +2,7 @@ PROG=Woodsman
 SRCS=main.c will_and_die.c tale.c tale_index.c tale_draft.c msbits.c weight.c bits_utils.c X.c string_utils.c
 OBJS=$(SRCS:%.c=%.c.o)
 ALLDEP=$(MAKEFILE_LIST)
+IN=log.txt
 
 all: $(PROG)
 
@@ -23,7 +24,7 @@ $(PROG): $(OBJS) $(ALLDEP)
 	$(COMPILE.c) $(OUTPUT_OPTION) $<
 
 run: $(PROG)
-	./$(PROG)
+	./$(PROG) <$(IN)
 
 .PHONY: line
 line:

@@ -38,8 +38,12 @@ int main()
 			if(tale_index_if_adoptable_to_msbits(msbits, tale_index[i])){
 				printf("main: applying tale[%ld]: ", i);
 				tale_print(tale[i]);
+				printf("main: the tale_index[%ld]: ", i);
+				print_bits_64(tale_index[i]);
 				msbits_adopt_tale_index(tale_index[i], &msbits);
 				weight_subtract_by_tale_index(tale_index[i], weight);
+				printf("main: after adopting: msbits: ");
+				print_bits_64(msbits);
 				i=-1;
 			}
 			if(msbits_subtractive_fill_all(&msbits)){

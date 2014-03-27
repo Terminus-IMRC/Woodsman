@@ -12,6 +12,7 @@ typedef uint64_t msbits_t;
 extern msbits_t msbits;
 
 #define msbits_if_filled_all(m) (!((~((~(uint64_t)0)<<(X*X)))&(~((m)))))
+#define substraction_base_if_adoptable_to_msbits(sb, m) if_factorial_of_2(((sb))^((m)))
 
 void msbits_init();
 void msbits_finalize();

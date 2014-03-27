@@ -3,11 +3,13 @@
 
 #include <math.h>
 #include <stdlib.h>
+#include <ctype.h>
 
-	typedef struct{
-		tale_draft_chain_t *next;
+	struct tale_draft_chain_t{
+		struct tale_draft_chain_t *next;
 		int *t;
-	} tale_draft_chain_t;
+	};
+	typedef struct tale_draft_chain_t tale_draft_chain_t;
 
 	extern tale_draft_chain_t *tale_draft_chain;
 	extern tale_draft_chain_t *tale_draft_chain_orig;

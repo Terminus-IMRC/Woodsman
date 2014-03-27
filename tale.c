@@ -1,9 +1,13 @@
 #include "common.h"
+#include "X.h"
 #include "tale.h"
 #include "tale_draft.h"
 #include "tale_index.h"
+#include "string_utils.h"
+#include <stdio.h>
 
-size_t ntale;
+long int ntales;
+tale_element_t tale_1dim;
 tale_t tale;
 
 void tale_init();
@@ -47,7 +51,6 @@ void tale_read()
 	}while(!feof(stdin));
 
 	tale_draft_chain_to_tale();
-	tale_draft_chain_destroy_entire();
 
 	return;
 }

@@ -1,7 +1,9 @@
 #include "common.h"
+#include "X.h"
 #include "tale_index.h"
+#include <stdlib.h>
 
-tale_index_t *tale_index;
+tale_index_t tale_index;
 
 void tale_index_init();
 void tale_index_finalize();
@@ -26,8 +28,6 @@ void tale_index_finalize()
 
 void tale_index_alloc()
 {
-	int i;
-
 	tale_index=(tale_index_t)calloc(ntales, sizeof(uint64_t));
 	assert(tale_index);
 

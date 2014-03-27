@@ -1,5 +1,5 @@
 PROG=Woodsman
-SRCS=main.c will_and_die.c tale.c tale_index.c tale_draft.c msbits.c weight.c bits_utils.c
+SRCS=main.c will_and_die.c tale.c tale_index.c tale_draft.c msbits.c weight.c bits_utils.c X.c string_utils.c
 OBJS=$(SRCS:%.c=%.c.o)
 ALLDEP=$(MAKEFILE_LIST)
 
@@ -8,7 +8,8 @@ all: $(PROG)
 CC:=cc
 HEADERFLAGS:=-I.
 OPTFLAGS:=-O0 -g
-WARNFLAGS:=-ansi -pedantic -Wall -Wextra -W -Wundef -Wshadow -Wcast-qual -Winline -Wno-long-long -fsigned-char
+WARNFLAGS:=-ansi -pedantic -Wall -Wextra -W -Wundef -Wcast-qual -Winline -Wno-long-long -fsigned-char
+LINKFLAGS=-lm
 RM:=rm -r -f
 WC:=wc -c -l
 

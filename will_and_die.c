@@ -1,5 +1,5 @@
 #include "common.h"
-#include <stdlib.h>
+#include "will_and_die.h"
 
 void will_and_die(const char *str, const int exitno)
 {

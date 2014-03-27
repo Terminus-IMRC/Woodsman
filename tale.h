@@ -4,7 +4,8 @@
 	typedef int* tale_element_t;
 	typedef tale_element_t* tale_t;
 
-	extern size_t ntale;
+	extern long int ntales;
+	extern tale_element_t tale_1dim;
 	extern tale_t tale;
 
 	void tale_init();

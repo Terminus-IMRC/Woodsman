@@ -1,4 +1,6 @@
 #include "common.h"
+#include "X.h"
+#include "tale.h"
 #include "tale_draft.h"
 
 tale_draft_chain_t *tale_draft_chain;
@@ -88,7 +90,9 @@ size_t probe_tale_draft_chain_len()
 
 void tale_draft_chain_to_tale()
 {
-	tale_chain_t *p;
+	int i;
+
+	tale_draft_chain_t *p;
 	tale_element_t t1;
 
 	ntales=probe_tale_draft_chain_len();

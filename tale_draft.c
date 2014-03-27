@@ -79,7 +79,7 @@ void str_to_tale(int *t, char *str)
 
 size_t probe_tale_draft_chain_len()
 {
-	size_t count=0;
+	size_t count=1;
 	tale_draft_chain_t *p=tale_draft_chain_orig;
 
 	while((p=p->next))

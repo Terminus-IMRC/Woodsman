@@ -66,13 +66,8 @@ void str_to_tale(int *t, char *str)
 {
         int i;
 
-        for(i=0; i<X*X; i++, str++){
-                /* isdigit() may be macros so *str should not be *str++ */
-                while((str) && (!isdigit(*str)))
-                        str++;
-
-                t[i]=(int)atoi(str);
-        }
+        for(i=0; i<X*X; i++)
+		t[i]=(int)strtol(str, &str, 10);
 
         return;
 }

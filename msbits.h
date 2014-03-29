@@ -20,5 +20,6 @@ void msbits_fill_element(int elem, msbits_t *m);
 void msbits_adopt_tale_index(uint64_t ti, msbits_t *m);
 void msbits_subtractive_fill_init();
 _Bool msbits_subtractive_fill_all(msbits_t *m);
+void msbits_cp(msbits_t *dst, const msbits_t src);
 
 #endif /* __MSBITS_H_INSIDE__ */

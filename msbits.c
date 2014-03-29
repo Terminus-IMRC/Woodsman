@@ -121,3 +121,10 @@ contloop:	continue;
 
 	return if_filled;
 }
+
+void msbits_cp(msbits_t *dst, const msbits_t src)
+{
+	*dst=src;
+
+	return;
+}

@@ -8,7 +8,7 @@ static uint64_t *subtraction_base_vert;
 static uint64_t *subtraction_base_hriz;
 static uint64_t *subtraction_base_diag;
 void msbits_subtractive_fill_init();
-_Bool msbits_subtractive_fill_all(msbits_t *m);
+uint64_t msbits_subtractive_fill_all(msbits_t *m);
 
 void msbits_init()
 {
@@ -86,25 +86,27 @@ void msbits_adopt_tale_index(uint64_t ti, msbits_t *m)
 	return;
 }
 
-_Bool msbits_subtractive_fill_all(msbits_t *m)
+uint64_t msbits_subtractive_fill_all(msbits_t *m)
 {
 	int i;
-	_Bool if_filled=0;
+	uint64_t ret=0;
 
 	/*
 	printf("msbits_subtactive_fill_all: passed msbits: ");
 	print_bits_64(*m);
 	*/
-	for(;; if_filled=1){
+	for(;;){
 		for(i=0; i<X; i++){
 			if(substraction_base_if_adoptable_to_msbits(subtraction_base_vert[i], (*m))){
 				printf("msbits_subtractive: applying vert[%d]\n", i);
 				(*m)|=subtraction_base_vert[i];
+				ret|=(uint64_t)1<<i;
 				goto contloop;
 			}
 			if(substraction_base_if_adoptable_to_msbits(subtraction_base_hriz[i], (*m))){
 				printf("msbits_subtractive: applying hriz[%d]\n", i);
 				(*m)|=subtraction_base_hriz[i];
+				ret|=(uint64_t)1<<(X+i);
 				goto contloop;
 			}
 		}
@@ -112,6 +114,7 @@ _Bool msbits_subtractive_fill_all(msbits_t *m)
 			if(substraction_base_if_adoptable_to_msbits(subtraction_base_diag[i], (*m))){
 				printf("msbits_subtractive: applying diag[%d]\n", i);
 				(*m)|=subtraction_base_diag[i];
+				ret|=(uint64_t)1<<(2*X+i);
 				goto contloop;
 			}
 		}
@@ -119,7 +122,7 @@ _Bool msbits_subtractive_fill_all(msbits_t *m)
 contloop:	continue;
 	}
 
-	return if_filled;
+	return ret;
 }
 
 void msbits_cp(msbits_t *dst, const msbits_t src)

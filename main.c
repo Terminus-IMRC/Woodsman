@@ -31,7 +31,7 @@ int main()
 
 	printf("main: final min_bf_count: %d\n", min_bf_count);
 	printf("main: the best bf history:\n");
-	bf_history_output(history_best);
+	bf_history_output(bf_history_best, min_bf_count);
 	printf("main: end of the sky fragile\n");
 
 	return 0;

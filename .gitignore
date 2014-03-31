@@ -1,2 +1,3 @@
 Woodsman
 *.c.o
+*.d

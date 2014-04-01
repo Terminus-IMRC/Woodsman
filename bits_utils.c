@@ -9,7 +9,7 @@ void print_bits_64(uint64_t b)
 		printf("%d", b&base?1:0);
 		base>>=1;
 	}
-	puts("");
+	putchar('\n');
 
 	return;
 }

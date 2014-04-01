@@ -3,6 +3,7 @@
 
 #include "common.h"
 #include "tale_index.h"
+#include "dpf.h"
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdio.h>

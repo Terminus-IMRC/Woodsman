@@ -4,6 +4,7 @@
 #include "common.h"
 #include "X.h"
 #include "msbits.h"
+#include "dpf.h"
 #include <stdio.h>
 #include <math.h>
 #include <string.h>

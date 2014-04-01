@@ -4,7 +4,6 @@
 #include "tale_draft.h"
 #include "tale_index.h"
 #include "string_utils.h"
-#include <stdio.h>
 
 long int ntales;
 tale_element_t tale_1dim;

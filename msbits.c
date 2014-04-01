@@ -52,16 +52,16 @@ void msbits_subtractive_fill_init()
 	subtraction_base_diag[1]<<=(X-1);
 
 	for(i=0; i<X; i++){
-		printf("msbits_subtractive_fill_init: vert[%d]:\n", i);
-		print_bits_64(subtraction_base_vert[i]);
+		dpf("msbits_subtractive_fill_init: vert[%d]:\n", i);
+		dprint_bits_64(subtraction_base_vert[i]);
 	}
 	for(i=0; i<X; i++){
-		printf("msbits_subtractive_fill_init: hriz[%d]:\n", i);
-		print_bits_64(subtraction_base_hriz[i]);
+		dpf("msbits_subtractive_fill_init: hriz[%d]:\n", i);
+		dprint_bits_64(subtraction_base_hriz[i]);
 	}
 	for(i=0; i<2; i++){
-		printf("msbits_subtractive_fill_init: diag[%d]:\n", i);
-		print_bits_64(subtraction_base_diag[i]);
+		dpf("msbits_subtractive_fill_init: diag[%d]:\n", i);
+		dprint_bits_64(subtraction_base_diag[i]);
 	}
 
 	return;
@@ -91,20 +91,18 @@ uint64_t msbits_subtractive_fill_all(msbits_t *m)
 	int i;
 	uint64_t ret=0;
 
-	/*
-	printf("msbits_subtactive_fill_all: passed msbits: ");
-	print_bits_64(*m);
-	*/
+	dpf("msbits_subtactive_fill_all: passed msbits: ");
+	dprint_bits_64(*m);
 	for(;;){
 		for(i=0; i<X; i++){
 			if(substraction_base_if_adoptable_to_msbits(subtraction_base_vert[i], (*m))){
-				printf("msbits_subtractive: applying vert[%d]\n", i);
+				dpf("msbits_subtractive: applying vert[%d]\n", i);
 				(*m)|=subtraction_base_vert[i];
 				ret|=(uint64_t)1<<(X-i-1);
 				goto contloop;
 			}
 			if(substraction_base_if_adoptable_to_msbits(subtraction_base_hriz[i], (*m))){
-				printf("msbits_subtractive: applying hriz[%d]\n", i);
+				dpf("msbits_subtractive: applying hriz[%d]\n", i);
 				(*m)|=subtraction_base_hriz[i];
 				ret|=(uint64_t)1<<(X+(X-i-1));
 				goto contloop;
@@ -112,7 +110,7 @@ uint64_t msbits_subtractive_fill_all(msbits_t *m)
 		}
 		for(i=0; i<2; i++){
 			if(substraction_base_if_adoptable_to_msbits(subtraction_base_diag[i], (*m))){
-				printf("msbits_subtractive: applying diag[%d]\n", i);
+				dpf("msbits_subtractive: applying diag[%d]\n", i);
 				(*m)|=subtraction_base_diag[i];
 				ret|=(uint64_t)1<<(2*X+(X-i-1));
 				goto contloop;

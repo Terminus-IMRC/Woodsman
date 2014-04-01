@@ -1,6 +1,12 @@
 #ifndef __TALE_H_INSIDE__
 #define __TALE_H_INSIDE__
 
+#ifdef DEBUG
+#define tale_dprint(t) tale_print(t)
+#else
+#define tale_dprint(t)
+#endif
+
 	typedef int* tale_element_t;
 	typedef tale_element_t* tale_t;
 

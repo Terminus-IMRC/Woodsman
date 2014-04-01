@@ -8,6 +8,7 @@
 #include "bits_utils.h"
 #include "string_utils.h"
 #include "bf.h"
+#include "dpf.h"
 #include <stdio.h>
 
 int main()
@@ -19,15 +20,15 @@ int main()
 	msbits_init();
 	bf_init();
 
-	printf("main: initialization finished\n");
+	dpf("main: initialization finished\n");
 
 	printf("weight: ");
 	weight_print(weight);
 
 	bf(0);
 
-	printf("main: final msbits:\n");
-	print_bits_64(msbits);
+	dpf("main: final msbits:\n");
+	dprint_bits_64(msbits);
 
 	printf("main: final min_bf_count: %d\n", min_bf_count);
 	printf("main: the best bf history:\n");

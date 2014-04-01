@@ -51,12 +51,12 @@ void bf(int level)
 		if(msbits&((uint64_t)1<<(X*X+elem-1)))
 			continue;
 		bf_history_part_clean(&bf_history[level]);
-		printf("bf: bruteforce element: %d\n", elem);
+		dpf("bf: bruteforce element: %d\n", elem);
 		msbits_fill_element(elem, &msbits);
 		bf_history[level].id|=BHI_BF;
 		bf_history[level].bf_elem=elem;
-		printf("bf: after adopt element: msbits:\n");
-		print_bits_64(msbits);
+		dpf("bf: after adopt element: msbits:\n");
+		dprint_bits_64(msbits);
 		ret_tmp=msbits_subtractive_fill_all(&msbits);
 		if(ret_tmp){
 			bf_history[level].id|=BHI_SFILL;
@@ -64,16 +64,16 @@ void bf(int level)
 		}
 		for(i=0; i<(long int)ntales; i++){
 			if(tale_index_if_adoptable_to_msbits(tale_index[i], msbits)){
-				printf("bf: applying tale[%ld]: ", i);
-				tale_print(tale[i]);
+				dpf("bf: applying tale[%ld]: ", i);
+				tale_dprint(tale[i]);
 				bf_history[level].id|=BHI_TALE;
 				bf_history[level].tale_num[bf_history[level].num_tale_num++]=i;
-				printf("bb: the tale_index[%ld]:\n", i);
-				print_bits_64(tale_index[i]);
+				dpf("bb: the tale_index[%ld]:\n", i);
+				dprint_bits_64(tale_index[i]);
 				msbits_adopt_tale_index(tale_index[i], &msbits);
 				/*weight_subtract_by_tale_index(tale_index[i], weight);*/
-				printf("bf: after adopting: msbits:\n");
-				print_bits_64(msbits);
+				dpf("bf: after adopting: msbits:\n");
+				dprint_bits_64(msbits);
 				i=-1;
 			}
 			if((ret_tmp=msbits_subtractive_fill_all(&msbits))){
@@ -85,16 +85,16 @@ void bf(int level)
 		if((!msbits_if_filled_all(msbits))&&(level+1<min_bf_count-1)){
 			bf(level+1);
 		}else{
-			printf("bf: reached the bottom(level=%d)\n", level);
+			dpf("bf: reached the bottom(level=%d)\n", level);
 			if(min_bf_count-1>level+1){
-				printf("bf: accepted\n");
+				dpf("bf: accepted\n");
 				min_bf_count=level+1;
 				printf("bf: current min_bf_count: %d\n", min_bf_count);
 				printf("bf: the elem history:\n");
 				bf_history_output(bf_history, tale, min_bf_count);
 				bf_history_cp(bf_history_best, bf_history, min_bf_count);
 			}else{
-				printf("bf: rejected(min_bf_count:%d, level:%d\n", min_bf_count, level);
+				dpf("bf: rejected(min_bf_count:%d, level:%d\n", min_bf_count, level);
 			}
 		}
 		msbits_cp(&msbits, m_orig);

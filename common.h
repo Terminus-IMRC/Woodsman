@@ -1,5 +1,5 @@
 #ifndef __COMMON_H_INSIDE__
-#define __COMMON_H_INSIDE_
+#define __COMMON_H_INSIDE__
 
 #include <stdint.h>
 #include <errno.h>

@@ -48,6 +48,8 @@ void bf(int level)
 	msbits_cp(&m_orig, msbits);
 
 	for(elem=level!=0?bf_history[level-1].bf_elem+1:0; elem<X*X; elem++){
+		if(msbits&((uint64_t)1<<(X*X+elem-1)))
+			continue;
 		bf_history_part_clean(&bf_history[level]);
 		printf("bf: bruteforce element: %d\n", elem);
 		msbits_fill_element(elem, &msbits);

@@ -100,13 +100,13 @@ uint64_t msbits_subtractive_fill_all(msbits_t *m)
 			if(substraction_base_if_adoptable_to_msbits(subtraction_base_vert[i], (*m))){
 				printf("msbits_subtractive: applying vert[%d]\n", i);
 				(*m)|=subtraction_base_vert[i];
-				ret|=(uint64_t)1<<i;
+				ret|=(uint64_t)1<<(X-i-1);
 				goto contloop;
 			}
 			if(substraction_base_if_adoptable_to_msbits(subtraction_base_hriz[i], (*m))){
 				printf("msbits_subtractive: applying hriz[%d]\n", i);
 				(*m)|=subtraction_base_hriz[i];
-				ret|=(uint64_t)1<<(X+i);
+				ret|=(uint64_t)1<<(X+(X-i-1));
 				goto contloop;
 			}
 		}
@@ -114,7 +114,7 @@ uint64_t msbits_subtractive_fill_all(msbits_t *m)
 			if(substraction_base_if_adoptable_to_msbits(subtraction_base_diag[i], (*m))){
 				printf("msbits_subtractive: applying diag[%d]\n", i);
 				(*m)|=subtraction_base_diag[i];
-				ret|=(uint64_t)1<<(2*X+i);
+				ret|=(uint64_t)1<<(2*X+(X-i-1));
 				goto contloop;
 			}
 		}

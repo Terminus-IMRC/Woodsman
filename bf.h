@@ -8,7 +8,7 @@
 #include <math.h>
 #include <string.h>
 
-	typedef uint32_t bf_history_id_t;
+	typedef uint8_t bf_history_id_t;
 
 #define BHI_BF ((bf_history_id_t)1<<0)
 #define BHI_SFILL ((bf_history_id_t)1<<1)
@@ -29,7 +29,7 @@
 	void bf_init();
 	void bf_history_part_clean(bf_history_t *t);
 	void bf(int level);
-	void bf_history_output(bf_history_t *h, int min);
+	void bf_history_output(bf_history_t *h, tale_t t, int min);
 	void bf_history_cp(bf_history_t *dst, bf_history_t *src, int n);
 
 #endif /* __BF_H_INSIDE__ */

@@ -47,9 +47,8 @@ void bf(int level)
 
 	msbits_cp(&m_orig, msbits);
 
-	bf_history_part_clean(&bf_history[level]);
-
 	for(elem=level!=0?bf_history[level-1].bf_elem+1:0; elem<X*X; elem++){
+		bf_history_part_clean(&bf_history[level]);
 		printf("bf: bruteforce element: %d\n", elem);
 		msbits_fill_element(elem, &msbits);
 		bf_history[level].id|=BHI_BF;
@@ -90,7 +89,7 @@ void bf(int level)
 				min_bf_count=level+1;
 				printf("bf: current min_bf_count: %d\n", min_bf_count);
 				printf("bf: the elem history:\n");
-				bf_history_output(bf_history, min_bf_count);
+				bf_history_output(bf_history, tale, min_bf_count);
 				bf_history_cp(bf_history_best, bf_history, min_bf_count);
 			}else{
 				printf("bf: rejected(min_bf_count:%d, level:%d\n", min_bf_count, level);
@@ -102,32 +101,33 @@ void bf(int level)
 	return;
 }
 
-void bf_history_output(bf_history_t *h, int min)
+void bf_history_output(bf_history_t *h, tale_t t, int min)
 {
 	int i, j;
 
 	for(i=0; i<min; i++){
 		printf("id[%d]:", i);
-		if(h[i].id | BHI_BF)
+		if(h[i].id & BHI_BF)
 			printf(" BHI_BF");
-		if(h[i].id | BHI_SFILL)
+		if(h[i].id & BHI_SFILL)
 			printf(" BHI_SFILL");
-		if(h[i].id | BHI_TALE)
+		if(h[i].id & BHI_TALE)
 			printf(" BHI_TALE");
 		putchar('\n');
 
-		if(h[i].id | BHI_BF)
+		if(h[i].id & BHI_BF)
 			printf("bf_elem[%d]: %d\n", i, h[i].bf_elem);
-		if(h[i].id | BHI_SFILL){
+		if(h[i].id & BHI_SFILL){
 			printf("m[%d]:\n", i);
 			print_bits_64(h[i].m);
 		}
-		if(h[i].id | BHI_TALE){
+		if(h[i].id & BHI_TALE){
 			printf("num_tale_num[%d]: %ld\n", i, h[i].num_tale_num);
 			printf("tale_num[%d]#%ld:", i, h[i].num_tale_num);
-			for(j=0; j<h[i].num_tale_num; j++)
-				printf(" %ld", h[i].tale_num[j]);
-			putchar('\n');
+			for(j=0; j<h[i].num_tale_num; j++){
+				printf(" %ld: ", h[i].tale_num[j]);
+				tale_print(t[h[i].tale_num[j]]);
+			}
 		}
 	}
 

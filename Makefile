@@ -27,6 +27,8 @@ HEADERFLAGS:=-I.
 OPTFLAGS:=-O0 -g
 WARNFLAGS:=-ansi -pedantic -Wall -Wextra -Werror -W -Wundef -Wcast-qual -Winline -Wno-long-long -fsigned-char
 LINKFLAGS=-lm
+ADDCFLAGS+=-fopenmp
+LINKFLAGS+=-fopenmp
 RM:=rm -r -f
 WC:=wc -c -l
 

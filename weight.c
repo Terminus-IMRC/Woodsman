@@ -53,10 +53,12 @@ void weight_make()
 	int i, j;
 	uint64_t t;
 
+#pragma omp parallel for private(j,t)
 	for(i=0; i<ntales; i++){
 		t=tale_index[i];
 		for(j=X*X-1; j>=0; j--){
 			if(t&((uint64_t)1)){
+#pragma omp atomic
 				weight[j]++;
 			}
 			t>>=1;

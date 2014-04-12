@@ -45,6 +45,7 @@ void tale_index_make()
 {
 	int i, j;
 
+#pragma omp parallel for private(j)
 	for(i=0; i<ntales; i++){
 		for(j=0; j<X*X; j++){
 			tale_index[i]<<=1;

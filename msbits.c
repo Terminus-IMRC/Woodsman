@@ -72,13 +72,6 @@ void msbits_finalize()
 	return;
 }
 
-void msbits_adopt_tale_index(uint64_t ti, msbits_t *m)
-{
-	(*m)|=ti;
-
-	return;
-}
-
 uint64_t msbits_subtractive_fill_all(msbits_t *m)
 {
 	int i;

@@ -25,7 +25,7 @@ else
  endif
 endif
 
-MAKEFILE_LIST_SANS_DEPS:=$(filter-out %.d, $(MAKEFILE_LIST))
+MAKEFILE_LIST_SANS_DEPS:=$(filter-out %.c.d, $(MAKEFILE_LIST))
 
 CC:=cc
 HEADERFLAGS:=-I.

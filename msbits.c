@@ -72,13 +72,6 @@ void msbits_finalize()
 	return;
 }
 
-void msbits_fill_element(int elem, msbits_t *m)
-{
-	(*m)|=(msbits_t)1<<(X*X-elem-1);
-
-	return;
-}
-
 void msbits_adopt_tale_index(uint64_t ti, msbits_t *m)
 {
 	(*m)|=ti;

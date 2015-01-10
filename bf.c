@@ -74,12 +74,11 @@ void bf(int level)
 				/*weight_subtract_by_tale_index(tale_index[i], weight);*/
 				dpf("bf: after adopting: msbits:\n");
 				dprint_bits_64(msbits);
+				if((ret_tmp=msbits_subtractive_fill_all(&msbits))){
+					bf_history[level].id|=BHI_SFILL;
+					bf_history[level].m|=ret_tmp;
+				}
 				i=-1;
-			}
-			if((ret_tmp=msbits_subtractive_fill_all(&msbits))){
-				i=-1;
-				bf_history[level].id|=BHI_SFILL;
-				bf_history[level].m|=ret_tmp;
 			}
 		}
 		if((!msbits_if_filled_all(msbits))&&(level+1<min_bf_count-1)){

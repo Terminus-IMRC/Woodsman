@@ -108,10 +108,3 @@ contloop:	continue;
 
 	return ret;
 }
-
-void msbits_cp(msbits_t *dst, const msbits_t src)
-{
-	*dst=src;
-
-	return;
-}

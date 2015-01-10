@@ -1,7 +1,7 @@
-PROG=Woodsman
-SRCS=main.c will_and_die.c tale.c tale_index.c tale_draft.c msbits.c weight.c bits_utils.c X.c string_utils.c bf.c dpf.c
-OBJS=$(SRCS:%.c=%.c.o)
-DEPS=$(SRCS:%.c=%.c.d)
+PROG:=Woodsman
+SRCS:=main.c will_and_die.c tale.c tale_index.c tale_draft.c msbits.c weight.c bits_utils.c X.c string_utils.c bf.c dpf.c
+OBJS:=$(SRCS:%.c=%.c.o)
+DEPS:=$(SRCS:%.c=%.c.d)
 ALLDEP=$(MAKEFILE_LIST_SANS_DEPS)
 NONEED_DEP_TARGETS+=clean line
 
@@ -19,7 +19,7 @@ else
  endif
 endif
 
-MAKEFILE_LIST_SANS_DEPS=$(filter-out %.d, $(MAKEFILE_LIST))
+MAKEFILE_LIST_SANS_DEPS:=$(filter-out %.d, $(MAKEFILE_LIST))
 
 CC:=cc
 HEADERFLAGS:=-I.

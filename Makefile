@@ -3,7 +3,6 @@ SRCS=main.c will_and_die.c tale.c tale_index.c tale_draft.c msbits.c weight.c bi
 OBJS=$(SRCS:%.c=%.c.o)
 DEPS=$(SRCS:%.c=%.c.d)
 ALLDEP=$(MAKEFILE_LIST_SANS_DEPS)
-IN=log.txt
 NONEED_DEP_TARGETS+=clean line
 
 all: $(PROG)
@@ -42,9 +41,6 @@ $(PROG): $(OBJS) $(ALLDEP)
 
 %.c.d: %.c $(ALLDEP)
 	$(COMPILE.dep) $<
-
-run: $(PROG)
-	./$(PROG) <$(IN)
 
 .PHONY: line
 line:
